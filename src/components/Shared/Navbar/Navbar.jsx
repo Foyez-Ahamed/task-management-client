@@ -56,7 +56,7 @@ const Navbar = () => {
               </label>
               <ul
                 tabIndex={0}
-                className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 space-y-4 font-medium dark:text-black"
+                className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 space-y-4 font-medium"
               >
                 {navItems}
               </ul>
@@ -67,7 +67,7 @@ const Navbar = () => {
                 <a className="cursor-pointer">
                   {" "}
                   <img
-                    className="hidden lg:block lg:w-[120px] rounded-md lg:ml-[-12px] lg:pt-2"
+                    className="hidden lg:block lg:w-[120px] rounded-md lg:ml-[-24px] lg:pt-2"
                     src={logo}
                     alt="logo image"
                   />{" "}
