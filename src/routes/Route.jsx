@@ -8,6 +8,7 @@ import About from "../pages/About/About";
 import NewTask from "../pages/NewTask/NewTask";
 import Contact from "../pages/Contact/Contact";
 import LearnMore from "../pages/LearnMore/LearnMore";
+import DashboardLayout from "../layout/DashboardLayout";
 
 const Route = createBrowserRouter([
     {
@@ -44,7 +45,12 @@ const Route = createBrowserRouter([
 
     {path : '/login', element : <Login/>},
 
-    {path : '/register', element : <Register/>}
+    {path : '/register', element : <Register/>},
+
+    {
+        path : 'dashboard',
+        element : <DashboardLayout/>
+    } 
 ])
 
 export default Route;
