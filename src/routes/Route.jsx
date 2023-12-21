@@ -7,6 +7,7 @@ import Register from "../pages/Register/Register";
 import About from "../pages/About/About";
 import NewTask from "../pages/NewTask/NewTask";
 import Contact from "../pages/Contact/Contact";
+import LearnMore from "../pages/LearnMore/LearnMore";
 
 const Route = createBrowserRouter([
     {
@@ -32,6 +33,11 @@ const Route = createBrowserRouter([
             {
                 path : 'contact',
                 element : <Contact></Contact>
+            },
+
+            {
+                path : 'learnMore',
+                element : <LearnMore></LearnMore>
             }
         ]
     },
