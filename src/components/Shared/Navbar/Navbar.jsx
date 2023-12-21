@@ -56,7 +56,7 @@ const Navbar = () => {
               </label>
               <ul
                 tabIndex={0}
-                className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 space-y-4 font-medium"
+                className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 space-y-4 font-medium uppercase"
               >
                 {navItems}
               </ul>
@@ -78,13 +78,13 @@ const Navbar = () => {
           </div>
 
           <div className="navbar-center hidden lg:flex">
-            <ul className="menu menu-horizontal px-1">{navItems}</ul>
+            <ul className="menu menu-horizontal px-1 uppercase">{navItems}</ul>
           </div>
 
           <div className="navbar-end">
 
            <Link to='/learnMore'>
-           <button className="text-[16px] font-medium hover:text-[#0087EB] transition">Learn More</button>
+           <button className="text-[16px] font-medium hover:text-[#0087EB] transition uppercase">Learn More</button>
            </Link>
 
           </div>
