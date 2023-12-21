@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import SocialLogin from "../../components/Shared/SocialLogin/SocialLogin";
 
 
 
@@ -89,7 +90,7 @@ const Login = () => {
 
             <div className="mt-8 text-center">
               <h1 className="font-bold"> Or Login with </h1>
-               {/* social login */}
+               <SocialLogin></SocialLogin>
             </div>
           </div>
         </div>
