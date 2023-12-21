@@ -24,6 +24,7 @@ const Register = () => {
         reset,
         formState: { errors },
       } = useForm();
+      
 
       const onSubmit = (data) => {
 

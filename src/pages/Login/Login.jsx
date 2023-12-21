@@ -1,18 +1,25 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import SocialLogin from "../../components/Shared/SocialLogin/SocialLogin";
+import useAuth from "../../hooks/useAuth";
+import toast from "react-hot-toast";
 
 const Login = () => {
-  
+   
+    const { userLogin } = useAuth();
+    
     const [showPassIcon, setShowPassIcon] = useState(false);
 
-    // const [error, setError] = useState(null);
+    const [error, setError] = useState(null);
+
+    const navigate = useNavigate();
 
     const {
         register,
         handleSubmit,
+        reset,
       } = useForm()
 
       const onSubmit = (data) => {
@@ -20,7 +27,19 @@ const Login = () => {
         const email =  data.email 
         const password = data.password
 
-        console.log(email, password);
+        userLogin(email, password)
+        .then((result) => {
+          console.log(result.user);
+
+          toast.success('Successfully Login');
+              navigate('/dashboard');
+              reset();
+
+        })
+        .catch((error) => {
+          setError(error.message);
+        })
+
     }
 
     return (
@@ -56,7 +75,7 @@ const Login = () => {
                     className="mt-4 input  w-full md:w-[390px] lg:w-[390px]"
                   />
 
-                  {/* {error && <p style={{ color: 'red' }}>{error}</p>} */}
+                  {error && <p style={{ color: 'red' }}>{error}</p>}
 
                 </div>
                 <span
