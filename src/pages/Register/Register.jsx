@@ -1,16 +1,27 @@
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useState } from "react";
 import SocialLogin from "../../components/Shared/SocialLogin/SocialLogin";
+import useAuth from "../../hooks/useAuth";
+import { getAuth, updateProfile } from "firebase/auth";
+import app from "../../FirebaseConfig/Firebase.config";
+import toast from "react-hot-toast";
+
+const auth = getAuth(app);
 
 const Register = () => {
 
+    const { userRegister } = useAuth();
+
     const [showPassIcon, setShowPassIcon] = useState(false);
+
+    const navigate = useNavigate();
 
     const {
         register,
         handleSubmit,
+        reset,
         formState: { errors },
       } = useForm();
 
@@ -18,39 +29,21 @@ const Register = () => {
 
         console.log(data.email, data.password);
    
-        // userRegister(data.email, data.password)
-        // .then(() => {
-    
-        //     updateProfile(auth.currentUser, {
-        //         displayName: data.name,
-        //         photoURL: data.photoUrl 
-        //       })
-        //       .then()
-        //       .catch()
-    
-        //     // user info // 
-        //     const userInfo = {
-        //         name : data.name,
-        //         email : data.email,
-        //         image : data.photoUrl
-        //     }
-        //     // user info // 
-    
-        //     // send ta to sever to database //
-        //     axiosPublic.post('/api/v1/createUser', userInfo)
-        //     .then(res => {
-        //         if(res.data.insertedId){
-        //             toast.success('Register Successfully');
-        //             reset();
-        //             navigate('/createStore');
-        //             // navigate(from, {replace:true});
-        //         }
-        //     })
-        //     // send ta to sever to database //
-    
-    
-        // })
-        // .catch();
+        userRegister(data.email, data.password)
+        .then((result) => {
+          console.log(result.user);
+            updateProfile(auth.currentUser, {
+                displayName: data.name,
+                photoURL: data.photoUrl 
+              })
+              .then()
+              .catch()
+
+              toast.success('Successfully Register');
+              navigate('/dashboard');
+              reset();
+        })
+        .catch();
     
       };
 

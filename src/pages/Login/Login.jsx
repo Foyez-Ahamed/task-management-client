@@ -4,10 +4,8 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import SocialLogin from "../../components/Shared/SocialLogin/SocialLogin";
 
-
-
 const Login = () => {
-
+  
     const [showPassIcon, setShowPassIcon] = useState(false);
 
     // const [error, setError] = useState(null);
