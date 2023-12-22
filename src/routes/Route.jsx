@@ -9,6 +9,7 @@ import NewTask from "../pages/NewTask/NewTask";
 import Contact from "../pages/Contact/Contact";
 import LearnMore from "../pages/LearnMore/LearnMore";
 import DashboardLayout from "../layout/DashboardLayout";
+import PrivateRoute from "./PrivateRoute";
 
 const Route = createBrowserRouter([
     {
@@ -49,7 +50,7 @@ const Route = createBrowserRouter([
 
     {
         path : 'dashboard',
-        element : <DashboardLayout/>
+        element : <PrivateRoute><DashboardLayout/></PrivateRoute>
     } 
 ])
 

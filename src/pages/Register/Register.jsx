@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useState } from "react";
 import SocialLogin from "../../components/Shared/SocialLogin/SocialLogin";
@@ -17,6 +17,8 @@ const Register = () => {
     const [showPassIcon, setShowPassIcon] = useState(false);
 
     const navigate = useNavigate();
+
+    const location = useLocation();
 
     const {
         register,
@@ -41,7 +43,7 @@ const Register = () => {
               .catch()
 
               toast.success('Successfully Register');
-              navigate('/dashboard');
+              navigate(location?.state ? location?.state : '/dashboard')
               reset();
         })
         .catch();

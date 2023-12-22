@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -16,6 +16,8 @@ const Login = () => {
 
     const navigate = useNavigate();
 
+    const location = useLocation();
+
     const {
         register,
         handleSubmit,
@@ -32,7 +34,9 @@ const Login = () => {
           console.log(result.user);
 
           toast.success('Successfully Login');
-              navigate('/dashboard');
+
+          navigate(location?.state ? location?.state : '/dashboard')
+          
               reset();
 
         })
