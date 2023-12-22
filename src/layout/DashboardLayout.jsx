@@ -3,6 +3,7 @@ import useAuth from '../hooks/useAuth';
 import toast from 'react-hot-toast';
 
 import logo from '../../src/assets/images/logo/logo.png'
+import Swal from 'sweetalert2';
 
 const Dashboard = () => {
     const { userLogout } = useAuth();
@@ -10,16 +11,27 @@ const Dashboard = () => {
     const navigate = useNavigate()
 
     const handleSignOut = () => {
-       
-        userLogout()
-        .then(() => {
-            toast.success('Successfully logout')
-            navigate('/')
-        })
-        .catch(error => {
-            toast.error(error.message);
-        })
 
+        Swal.fire({
+            title: "Are you sure?",
+            text: "Want to logout?",
+            icon: "question",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, logout"
+          }).then((result) => {
+            if (result.isConfirmed) {
+                userLogout()
+                .then(() => {
+                    toast.success('Successfully logout')
+                    navigate('/')
+                })
+                .catch(error => {
+                    toast.error(error.message);
+                })
+            }
+          });
     }
  
 
@@ -75,7 +87,7 @@ const Dashboard = () => {
                 </div> 
                  
                 <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label>
-                <ul className="menu w-80 min-h-full bg-base-200 text-base-content px-8">
+                <ul className="menu w-80 min-h-full bg-base-200 text-base-content px-8 font-bold">
                     
                    {
                     menu
