@@ -35,8 +35,8 @@ const Login = () => {
 
           toast.success('Successfully Login');
 
-          navigate(location?.state ? location?.state : '/dashboard')
-          
+          navigate(location?.state ? location?.state : '/dashboard/userProfile')
+
               reset();
 
         })

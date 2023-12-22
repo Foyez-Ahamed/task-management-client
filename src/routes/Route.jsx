@@ -10,6 +10,9 @@ import Contact from "../pages/Contact/Contact";
 import LearnMore from "../pages/LearnMore/LearnMore";
 import DashboardLayout from "../layout/DashboardLayout";
 import PrivateRoute from "./PrivateRoute";
+import UserProfile from "../pages/Dashboard/UserProfile";
+import AddNewTask from "../pages/Dashboard/AddNewTask";
+import TaskManagement from "../pages/Dashboard/TaskManagement";
 
 const Route = createBrowserRouter([
     {
@@ -50,7 +53,23 @@ const Route = createBrowserRouter([
 
     {
         path : 'dashboard',
-        element : <PrivateRoute><DashboardLayout/></PrivateRoute>
+        element : <PrivateRoute><DashboardLayout/></PrivateRoute>,
+        children : [
+            {
+                path : 'userProfile',
+                element : <UserProfile></UserProfile>
+            },
+
+            {
+                path : 'addNewTask',
+                element : <AddNewTask></AddNewTask>
+            },
+
+            {
+                path : 'taskManagement',
+                element : <TaskManagement></TaskManagement>
+            }
+        ]
     } 
 ])
 

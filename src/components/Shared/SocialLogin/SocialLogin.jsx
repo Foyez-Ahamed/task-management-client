@@ -1,7 +1,7 @@
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import useAuth from "../../../hooks/useAuth";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
 const SocialLogin = () => {
@@ -10,13 +10,15 @@ const SocialLogin = () => {
 
     const navigate = useNavigate();
 
+    const location = useLocation();
+
     const handleGoogleLogin = () => {
       
       googleLogin()
       .then((result) => {
         console.log(result.user);
         toast.success('Successfully google login');
-        navigate('/dashboard');
+        navigate(location?.state ? location?.state : '/dashboard/userProfile')
       })
 
       .catch(error => {

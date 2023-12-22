@@ -17,8 +17,8 @@ const Dashboard = () => {
             text: "Want to logout?",
             icon: "question",
             showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
+            confirmButtonColor: "#0087EB",
+            cancelButtonColor: "#000000",
             confirmButtonText: "Yes, logout"
           }).then((result) => {
             if (result.isConfirmed) {
@@ -37,38 +37,44 @@ const Dashboard = () => {
 
     const menu = (
         <ul className='list-disc px-6 flex flex-col'>
-            <li>
-                <NavLink to='/dashboard/userHome' >
+            <li className='hover:text-white hover:bg-zinc-900 hover:rounded-md'>
+                <NavLink to='/dashboard/userProfile'>
                     Profile
                 </NavLink>
             </li>
-            <li>
-                <NavLink to='/dashboard/addTask' >
+
+            <li className='hover:text-white hover:bg-zinc-900 hover:rounded-md'>
+                <NavLink to='/dashboard/addNewTask' >
                     New Task
                 </NavLink>
             </li>
-            <li>
+
+            <li className='hover:text-white hover:bg-zinc-900 hover:rounded-md'>
                 <NavLink to='/dashboard/taskManagement' >
                     Manage Task
                 </NavLink>
             </li>
+
             <div className="divider font-bold"></div>
 
-            <li>
+            <li className='hover:text-white hover:bg-zinc-900 hover:rounded-md'>
                 <button onClick={handleSignOut}>Logout</button>
             </li>
-            <li>
+
+            <li className='hover:text-white hover:bg-zinc-900 hover:rounded-md'>
                 <NavLink to='/'>Home</NavLink>
             </li>
+
         </ul>
     );
 
     return (
         <div className="drawer lg:drawer-open ">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-            <div className="drawer-content flex flex-col h-screen lg:overflow-y-scroll ">
+            <div className="drawer-content flex flex-col h-screen lg:overflow-y-scroll pt-4 px-6">
               
                 <Outlet></Outlet>
+
                 <label  htmlFor="my-drawer-2" className="btn absolute top-7 right-7 btn-primary drawer-button lg:hidden "><i className="fa-solid fa-bars"></i></label>
 
             </div>

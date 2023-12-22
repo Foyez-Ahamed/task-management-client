@@ -43,7 +43,7 @@ const Register = () => {
               .catch()
 
               toast.success('Successfully Register');
-              navigate(location?.state ? location?.state : '/dashboard')
+              navigate(location?.state ? location?.state : '/dashboard/userProfile')
               reset();
         })
         .catch();
