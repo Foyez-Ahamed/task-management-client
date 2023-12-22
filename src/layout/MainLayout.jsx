@@ -12,7 +12,9 @@ const MainLayout = () => {
 
           <Outlet></Outlet>
 
+          <div className="mt-16">
           <Footer></Footer>
+          </div>
           
         </div>
 

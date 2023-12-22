@@ -3,12 +3,21 @@ import DatePicker from "react-datepicker";
 import TimePicker from "react-time-picker";
 import "react-datepicker/dist/react-datepicker.css";
 import "react-time-picker/dist/TimePicker.css";
+import useAuth from "../../hooks/useAuth";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import toast from "react-hot-toast";
 
 const AddNewTask = () => {
+
+   const { user } = useAuth(); 
+
+   const axiosPublic = useAxiosPublic();
+
   const {
     register,
     handleSubmit,
     control,
+    reset,
     // formState: { errors },
   } = useForm();
 
@@ -29,9 +38,20 @@ const AddNewTask = () => {
       deadlineDate,
       deadlineTime,
       priority,
+      type : 'To-Do',
+      userEmail : user?.email
     };
 
-    console.log(taskInfo);
+    axiosPublic.post('/api/createTask', taskInfo)
+    .then(res => {
+        console.log(res.data);
+        if(res.data.insertedId) {
+            toast.success('Task created successfully')
+            reset();
+        } else {
+            toast.error('error')
+        }
+    })
 
   };
 

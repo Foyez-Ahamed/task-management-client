@@ -1,28 +1,30 @@
-import { useState } from "react";
-import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
-import 'react-tabs/style/react-tabs.css';
+import useTasks from "../../hooks/useTasks";
 const TaskManagement = () => {
-    const [tabIndex, setTabIndex] = useState(0);
+
+    const [tasks] = useTasks();
+
+    console.log(tasks);
+
     return (
-        <div className="flex justify-center items-center mt-24">
-            <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
-                <div className="text-center my-3">
-                <TabList className='font-bold'>
-                    <Tab>To-Do</Tab>
-                    <Tab>Ongoing</Tab>
-                    <Tab>Completed</Tab>
-                </TabList>
+      
+        <div className="mt-20">
+           
+           <section className="flex flex-col lg:flex-row justify-evenly gap-8">
+            <div className="bg-[#9476b1] px-10 py-2 rounded-md font-bold text-white">
+                <h1>To-Do</h1>
+            </div>
 
-                </div>
+            <div className="bg-zinc-800 px-10 py-2 rounded-md font-bold text-white">
+                <h1>Ongoing</h1>
+            </div>
 
-                <div className="mt-10">
-                <TabPanel><h1>to</h1></TabPanel>
-                <TabPanel><h1>on</h1></TabPanel>
-                <TabPanel><h1>com</h1></TabPanel>
-                </div>
+            <div className="bg-green-600 px-10 py-2 rounded-md font-bold text-white">
+                <h1>Complete</h1>
+            </div>
+           </section>
 
-            </Tabs>
         </div>
+
     );
 };
 

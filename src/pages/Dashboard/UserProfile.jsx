@@ -1,8 +1,12 @@
 import useAuth from '../../hooks/useAuth';
+import useTasks from '../../hooks/useTasks';
 
 const UserProfile = () => {
 
     const { user } = useAuth();
+
+    const [tasks] = useTasks();
+
     return (
         <div className='space-y-3 text-center mt-20 w-[80%] mx-auto'>
             <div className='mb-8 space-y-2'>
@@ -16,7 +20,7 @@ const UserProfile = () => {
             <div className='grid grid-cols-1 lg:grid-cols-3 gap-5 '>
 
                 <div className="flex border-2 flex-col items-center gap-3 px-8 py-10 bg-white rounded-lg shadow-lg">
-                    <h3 className='font-bold'>To-Do: 0</h3>
+                    <h3 className='font-bold'>To-Do: {tasks.length}</h3>
                 </div>
 
                 <div className="flex border-2 flex-col items-center gap-3 px-8 py-10 bg-white rounded-lg shadow-lg">

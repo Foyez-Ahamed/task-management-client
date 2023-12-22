@@ -17,7 +17,7 @@ const Banner = () => {
             <p className="text-[18px]">Take control of your daily tasks. Our platform simplifies task management, making it easy for you to prioritize and achieve your goals.</p>
 
             <button>
-            <Link to={user? '/dashboard' : '/login'}>
+            <Link to={user? '/dashboard/userProfile' : '/login'}>
             <button className="px-6 py-2 bg-[#0087EB] text-white font-bold rounded-md hover:bg-zinc-800 transition-colors">Lets Explore</button>
              </Link>
             </button>
