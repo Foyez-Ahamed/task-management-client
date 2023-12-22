@@ -1,11 +1,30 @@
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
+import useAuth from "../../../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const SocialLogin = () => {
+  
+    const { googleLogin } = useAuth();
+
+    const navigate = useNavigate();
 
     const handleGoogleLogin = () => {
-        console.log('Hello Social Login');
+      
+      googleLogin()
+      .then((result) => {
+        console.log(result.user);
+        toast.success('Successfully google login');
+        navigate('/dashboard');
+      })
+
+      .catch(error => {
+        toast.error(error.message);
+      })
+
     }
+
 
     const handleGithubLogin = () => {
         console.log('Hello github login');
