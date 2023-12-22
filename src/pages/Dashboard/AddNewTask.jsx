@@ -44,7 +44,6 @@ const AddNewTask = () => {
 
     axiosPublic.post('/api/createTask', taskInfo)
     .then(res => {
-        console.log(res.data);
         if(res.data.insertedId) {
             toast.success('Task created successfully')
             reset();

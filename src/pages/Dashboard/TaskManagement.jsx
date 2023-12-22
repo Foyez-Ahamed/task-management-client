@@ -26,8 +26,6 @@ const TaskManagement = () => {
               
                 axiosPublic.delete(`/api/removeTask/${id}`)
                 .then(res => {
-                    console.log(res.data);
-
                     if(res.data.deletedCount > 0) {
                         toast.success('Task remove successfully')
                         refetch();
